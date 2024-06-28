@@ -37,3 +37,24 @@ services:
 
 volumes:
   mongo-data:
+
+version: '1.0'
+services:
+  mongodb:
+    image: "mongo"
+  server:
+    container_name: mern-server
+    build: ./backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongodb
+
+  client:
+    container_name: mern-client
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - server
+
