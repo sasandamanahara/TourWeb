@@ -1,43 +1,3 @@
-version: "3"
-services:
-  mongodb:
-    image: mongo
-    container_name: mongodb
-    ports:
-      - "27017:27017"
-    volumes:
-      - mongo-data:/data/db
-
-  backend:
-    build: ./backend
-    container_name: backend
-    ports:
-      - "3000:3000"
-    depends_on:
-      - mongodb
-    environment:
-      - PORT=3000
-      - MONGO_URI=mongodb+srv://sasandamanahara:sasanda1234@cluster0.mtt7afa.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
-
-      - JWT_TOKEN_KEY=asddfassadfsadfadasdffewcddzgse
-    volumes:
-      - ./backend:/usr/src/app
-      - /usr/src/app/node_modules
-
-  frontend:
-    build: ./frontend
-    container_name: frontend
-    ports:
-      - "5000:3000"
-    depends_on:
-      - backend
-    volumes:
-      - ./frontend:/usr/src/app
-      - /usr/src/app/node_modules
-
-volumes:
-  mongo-data:
-
 version: '1.0'
 services:
   mongodb:
@@ -46,7 +6,7 @@ services:
     container_name: mern-server
     build: ./backend
     ports:
-      - "5000:5000"
+      - "3000:3000"
     depends_on:
       - mongodb
 
@@ -54,7 +14,6 @@ services:
     container_name: mern-client
     build: ./frontend
     ports:
-      - "3000:3000"
+      - "5000:3000"
     depends_on:
       - server
-
