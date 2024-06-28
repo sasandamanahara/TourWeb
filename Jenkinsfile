@@ -19,18 +19,19 @@ pipeline {
                 }
             }
         }
-        stage('Login to Docker Hub') {
-    steps {
-        withCredentials([string(credentialsId: 'docker_pwd', variable: 'Dockerhub')]) {
-            bat "docker login -u sasandamanahara -p ${Dockerhub}"
-        }
-    }
-}
-
+        
         stage('Deploy with Docker Compose') {
             steps {
                 script {
                     bat 'docker-compose up -d'
+                }
+            }
+        }
+
+        stage('Login to Docker Hub') {
+            steps {
+                withCredentials([string(credentialsId: 'docker_pwd', variable: 'Dockerhub')]) {
+                    bat "docker login -u sasandamanahara -p ${Dockerhub}"
                 }
             }
         }
