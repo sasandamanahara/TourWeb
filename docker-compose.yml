@@ -1,7 +1,10 @@
-version: '1.0'
+version: "1.0"
 services:
   mongodb:
     image: "mongo"
+    env_file:
+      - .env
+
   server:
     container_name: mern-server
     build: ./backend
@@ -9,6 +12,8 @@ services:
       - "3000:3000"
     depends_on:
       - mongodb
+    env_file:
+      - .env
 
   client:
     container_name: mern-client
