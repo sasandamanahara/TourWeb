@@ -1,12 +1,20 @@
-FROM node:latest
+# Use official Node.js image as base
+FROM node:14
+
+# Set working directory
 WORKDIR /app
 
-COPY package.json .
+# Copy package.json and package-lock.json
+COPY package*.json ./
 
+# Install dependencies
 RUN npm install
 
+# Copy the rest of the application code
 COPY . .
 
-EXPOSE 3000
+# Expose the port the app runs on
+EXPOSE 5000
 
-CMD ["npm","start"]
+# Start the server
+CMD ["node", "server.js"]
