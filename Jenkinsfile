@@ -13,8 +13,8 @@ pipeline {
         stage('Build Docker Images') {
             steps {
                 script {
-                    bat 'docker build --no-cache -t sasandamanahara/tourweb-frontend:%BUILD_NUMBER%  frontend'
-                    bat 'docker build --no-cache -t sasandamanahara/tourweb-backend:%BUILD_NUMBER%  backend'
+                    bat 'docker build  -t sasandamanahara/tourweb-frontend:%BUILD_NUMBER%  frontend'
+                    bat 'docker build  -t sasandamanahara/tourweb-backend:%BUILD_NUMBER%  backend'
 
                 }
             }
