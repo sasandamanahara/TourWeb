@@ -6,7 +6,7 @@ pipeline {
         stage('SCM Checkout') {
             steps {
                 retry(10) {
-                    git branch: 'dev', url: 'https://github.com/sasandamanahara/TourWeb'
+                    git branch: 'main', url: 'https://github.com/sasandamanahara/TourWeb'
                 }
             }
         }
