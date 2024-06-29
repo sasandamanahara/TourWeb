@@ -9,7 +9,7 @@ services:
     container_name: mern-server
     build: ./backend
     ports:
-      - "3001:3001"
+      - "3000:3000"
     depends_on:
       - mongodb
     env_file:
@@ -19,6 +19,6 @@ services:
     container_name: mern-client
     build: ./frontend
     ports:
-      - "3000:3000"
+      - "3003:3000"
     depends_on:
       - server
