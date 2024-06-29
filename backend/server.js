@@ -3,11 +3,21 @@ const mongoose = require('mongoose');
 const express = require('express');
 const dotenv = require('dotenv');
 
+
+
+
+const cors = require('cors');
+const app = express();
+
+app.use(cors({
+  origin: 'http://localhost:3001' // Allow requests from this origin
+}));
+
 // Load environment variables from .env file
 dotenv.config();
 
-const app = express();
-const port = process.env.PORT || 5000;
+
+const port = process.env.PORT ;
 const mongoURI = process.env.MONGO_URI;
 
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
