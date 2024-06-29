@@ -14,7 +14,7 @@ const Header = () => {
       >
         <Toolbar sx={{ flexWrap: 'wrap' }}>
           <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            SS Tours LK
+            SS-Tours
           </Typography>
           <nav>
             <Link
